@@ -53,7 +53,7 @@ async function doJb() {
     }
 
     if (fn.setuid.invoke(0) !== -1) {
-      msgs.innerHTML = "جهازك مفعل  سابقا";
+      msgs.innerHTML = "GoldHEN is Already Loaded ...";
       return;
     }
 
