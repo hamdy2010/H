@@ -1700,7 +1700,7 @@ export async function kexploit() {
   }
 
   if (localStorage.ExploitLoaded === "yes" && sessionStorage.ExploitLoaded != "yes") {
-    msgs.innerHTML = "جهازك مفعل  سابقا";
+    msgs.innerHTML = "GoldHEN is Already Loaded ...";
     return new Promise(() => {});
   }
 
@@ -1866,9 +1866,9 @@ function runPayload(path) {
 kexploit().then(() => {
 	setTimeout(() => {
 		runPayload("./goldhen_2.4b18.12.bin");
-		msgs.innerHTML = "تم التفعيل بنجاح ✔";
+		msgs.innerHTML = "GoldHEN v2.4b18.12 Loaded ...";
 	},500);
 }).catch(() => {
-    msgs.innerHTML = "فشل التفعيل أعد تشغيل جهازك";
+    msgs.innerHTML = "Failed to Load! Restart Your Console ...";
     msgs.style.color = "yellow";
 });
