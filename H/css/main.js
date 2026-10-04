@@ -112,7 +112,6 @@ async function doJb() {
     }
 
     msgs.innerHTML = "تم التفعيل بنجاح ✔";
-    logger.info("===END===");
   } catch (e) {
     msgs.innerHTML = "فشل التفعيل أعد تشغيل جهازك";
     msgs.style.color = "yellow";
