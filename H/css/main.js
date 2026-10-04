@@ -111,10 +111,10 @@ async function doJb() {
       load_bin(bin_u8);
     }
 
-    msgs.innerHTML = "تم التفعيل بنجاح ✔";
+    msgs.innerHTML = "GoldHEN v2.4b18.12 Loaded ...";
     logger.info("===END===");
   } catch (e) {
-    msgs.innerHTML = "فشل التفعيل أعد تشغيل جهازك";
+    msgs.innerHTML = "Failed to Load! Restart Your Console ...";
     msgs.style.color = "yellow";
   }
 }
