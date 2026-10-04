@@ -110,8 +110,10 @@ async function doJb() {
       const bin_u8 = new Uint8Array(bin_buf);
       load_bin(bin_u8);
     }
-
-    msgs.innerHTML = "تم التفعيل بنجاح ✔";
+kexploit().then(() => {
+	setTimeout(() => {
+		runPayload("./goldhen_2.4b18.12.bin");
+		msgs.innerHTML = "تم التفعيل بنجاح ✔";
   } catch (e) {
     msgs.innerHTML = "فشل التفعيل أعد تشغيل جهازك";
     msgs.style.color = "yellow";
