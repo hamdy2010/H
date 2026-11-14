@@ -36,7 +36,7 @@ const params = new URLSearchParams(location.search);
 function hostOk() {
   var m = document.getElementById("msgs");
   if (m) {
-    m.innerHTML = "GoldHEN v2.4b18.13 Loaded ...";
+    m.innerHTML = "GoldHEN v2.4b18.14 Loaded ...";
   }
 }
 
@@ -407,7 +407,7 @@ let allDone = false,
   // 14.00 host defaults: run afterglow with GoldHEN only (original structure kept).
   if (!params.get("afterglow")) params.set("afterglow", "1");
   if (!params.get("mode")) params.set("mode", "goldhen");
-  if (!params.get("payload")) params.set("payload", "goldhen_2.4b18.13.bin");
+  if (!params.get("payload")) params.set("payload", "goldhen_2.4b18.14.bin");
   let p = null;
 
   const opened = [];
@@ -614,7 +614,7 @@ let allDone = false,
       ? "slopkit/patches/1400.bin"
       : "slopkit/patches/" + (off.kpatch || fwKey.replace(".", "") + ".bin");
     const PAYLOAD_FILE = OWN_KERNEL_STAGE
-      ? (params.get("payload") || "goldhen_2.4b18.13.bin")
+      ? (params.get("payload") || "goldhen_2.4b18.14.bin")
       : off.payload || "payload.bin";
     const needPatch = OWN_KERNEL_STAGE ? [] : ["k_sysent_661", "k_jmp_rsi"].filter(
       (k) => off[k] === undefined,
@@ -1156,17 +1156,13 @@ let allDone = false,
       allDone = true;
       try { clearInterval(watchdog); } catch (e) {}
       finishUI(agOk);
-      // Swap the address out. The browser restores the last one after a
-      // reload, and an enabler that restarts SceShellUI causes exactly that
-      // reload -- so the last address must not be the one that runs the
-      // exploit again. Relative, so it lands on this folder's landing page
-      // however the files are served -- under a host's subdirectory just as
-      // well as at a root. The marker tells that page to hold its autostart;
-      // without it the restored landing page would count down and run the
-      // whole chain a second time on an already patched kernel.
-      try {
-        sessionStorage.setItem(SESSION_DONE_KEY, "1");
-      } catch (e) {}
+      // Only mark session done on success. On failure the user must be able
+      // to reopen the browser and retry without seeing "Already Loaded".
+      if (agOk) {
+        try {
+          sessionStorage.setItem(SESSION_DONE_KEY, "1");
+        } catch (e) {}
+      }
       /* Only rewrite the URL bar — do NOT navigate/reload (would OOM). */
       try {
         history.replaceState(null, "", "index.html");
