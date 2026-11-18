@@ -32,7 +32,7 @@ const params = new URLSearchParams(location.search);
 
 function hostOk() {
   var m = document.getElementById("msgs") || document.getElementById("msg");
-  if (m) m.innerHTML = "تم التفعيل بنجاح ✔";
+  if (m) m.innerHTML = "✔ تم التفعيل بنجاح";
 }
 function hostFail() {
   var m = document.getElementById("msgs") || document.getElementById("msg");
